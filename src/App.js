@@ -1,34 +1,17 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import ReactAutocomplete from 'react-autocomplete';
-import axios from 'axios';
+import { useSearch } from './hooks';
 
 function App() {
   const [value, setValue] = useState('');
-  const [items, setItems] = useState([]);
-
-  // Similar to componentDidMount and componentDidUpdate:
-  useEffect(() => {
-    // Make a request for a user with a given ID
-      axios.get(`https://en.wikipedia.org/w/api.php?origin=*&action=opensearch&search=${value}`)
-      .then(function (response) {
-        const parsedResponse = [];
-        for(let i = 0; i < response.data[1].length; i++){
-          parsedResponse.push({
-            id: response.data[3][i],
-            label: response.data[1][i]
-          })
-        }
-        setItems(parsedResponse);
-      })
-      .catch(function (error) {
-        // handle error
-        console.log(error);
-      })
-  }, [value]); // dependency recalls the code in useEffect (componentDidUpdate)
+  const {articles, status, error} = useSearch(value);
 
   return (
+    <> {/* <> fragment - element wrapper for component (html stuff) */}
+    <p>Status: {status}</p>
+    <p>Error: {error}</p>
     <ReactAutocomplete
-        items={items}
+        items={articles}
         shouldItemRender={(item, value) => item.label.toLowerCase().indexOf(value.toLowerCase()) > -1}
         getItemValue={item => item.label}
         renderItem={(item, highlighted) =>
@@ -43,6 +26,7 @@ function App() {
         onChange={e => setValue(e.target.value)}
         onSelect={value => setValue(value)}
       />
+      </>
   );
 }
 
