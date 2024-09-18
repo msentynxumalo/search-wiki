@@ -4,12 +4,9 @@ import { useSearch } from './hooks';
 
 function App() {
   const [value, setValue] = useState('');
-  const {articles, status, error} = useSearch(value);
+  const {articles} = useSearch(value);
 
   return (
-    <> {/* <> fragment - element wrapper for component (html stuff) */}
-    <p>Status: {status}</p>
-    <p>Error: {error}</p>
     <ReactAutocomplete
         items={articles}
         shouldItemRender={(item, value) => item.label.toLowerCase().indexOf(value.toLowerCase()) > -1}
@@ -26,7 +23,6 @@ function App() {
         onChange={e => setValue(e.target.value)}
         onSelect={value => setValue(value)}
       />
-      </>
   );
 }
 
