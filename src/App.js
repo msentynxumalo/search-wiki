@@ -1,10 +1,10 @@
 import React, { useState } from 'react';
 import ReactAutocomplete from 'react-autocomplete';
-import { useSearch } from './hooks';
+import { useDebounce, useSearch } from './hooks';
 
 function App() {
   const [value, setValue] = useState('');
-  const {articles} = useSearch(value);
+  const {articles} = useSearch(useDebounce(value, 500)); // pass delay to execute api call in case of quick typing
 
   return (
     <ReactAutocomplete
