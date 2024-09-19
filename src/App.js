@@ -3,13 +3,16 @@ import {
   BrowserRouter as Router,
   Switch,
   Route} from "react-router-dom";
+import Home from "./pages/Home";
+import Search from "./pages/Search";
+import NotFound from "./pages/NotFound";
 
 const App = () => (
   <Router>
     <Switch>
-      <Route path="/home" render={() => <div>Home</div>}/>
-      <Route path="/search" render={() => <div>Search</div>}/>
-      <Route render={() => <div>Page Not Found!</div>}/>
+      <Route exact path="/" component={Home}/>
+      <Route path="/search" component={Search}/>
+      <Route component={NotFound}/>
     </Switch>
   </Router>
 );
