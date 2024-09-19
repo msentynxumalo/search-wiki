@@ -2,7 +2,7 @@ import React from "react";
 import Container from "./components/Container";
 import Autocomplete from "./components/Autocomplete";
 
-const App = () => {
+const App = () => (
   <Container>
     {({ searchValue, onSearchChange, articles }) => (
       <Autocomplete
@@ -11,7 +11,7 @@ const App = () => {
         articles={articles}
       />
     )}
-  </Container>;
-};
+  </Container>
+);
 
 export default App;

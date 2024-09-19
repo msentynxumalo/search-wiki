@@ -3,7 +3,7 @@ import ReactAutocomplete from "react-autocomplete";
 import Input from "../input";
 
 
-const Autocomplete = ({ articles, searchValue, onSearchChange }) => {
+const Autocomplete = ({ articles, searchValue, onSearchChange }) => (
   <ReactAutocomplete
     items={articles}
     renderInput={Input}
@@ -31,7 +31,7 @@ const Autocomplete = ({ articles, searchValue, onSearchChange }) => {
     )}
     value={searchValue}
     onChange={onSearchChange}
-  />;
-};
+  />
+  )
 
 export default Autocomplete;
