@@ -23,7 +23,7 @@ const Search = ({ ...props }) => {
         )}
       </Container>
 
-      {!articles.length && status === "SUCCESS" ? (
+      {!articles.length && status === "Success" ? (
         <h3>No results found for: {query}</h3>
       ) : (
         articles.map((article) => {
