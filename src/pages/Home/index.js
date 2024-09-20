@@ -6,7 +6,7 @@ import './styles.scss';
 const Home = () => {
   return (
     <div className="home-page-container">
-        <img src="./search.png" alt="logo"/>
+        <img src="./poodle.png" alt="logo"/>
      <div>
      <Container>
         {({ searchValue, onSearchChange, articles }) => (
